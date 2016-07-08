@@ -16,8 +16,10 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "~2.1",
-        "symfony/form": "~2.1",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "symfony/config": "~2.8|~3.0",
+        "symfony/dependency-injection": "~2.8|~3.0",
+        "symfony/form": "~2.8|~3.0",
         "moovly/recurly": "~0.1"
     },
     "autoload": {

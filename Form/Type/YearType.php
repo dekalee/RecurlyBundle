@@ -3,11 +3,11 @@
 namespace Moovly\RecurlyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType as BaseAbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class YearType extends BaseAbstractType
 {
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $year    = date('Y');
         $choices = array();
@@ -16,16 +16,17 @@ class YearType extends BaseAbstractType
         }
 
         $resolver->setDefaults([
+            'choices_as_values' => true,
             'choices' => $choices,
         ]);
     }
 
     public function getParent()
     {
-        return 'choice';
+        return 'Symfony\Component\Form\Extension\Core\Type\ChoiceType';
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'year';
     }

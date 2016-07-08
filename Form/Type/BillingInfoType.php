@@ -4,7 +4,7 @@ namespace Moovly\RecurlyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BillingInfoType extends AbstractType
 {
@@ -15,28 +15,28 @@ class BillingInfoType extends AbstractType
     {
         $builder->add(
             'firstName',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'First Name',
             ]
         );
         $builder->add(
             'lastName',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Last Name',
             ]
         );
         $builder->add(
             'address1',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Address 1',
             ]
         );
         $builder->add(
             'address2',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Address 2',
                 'required' => false,
@@ -44,14 +44,14 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'city',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'City',
             ]
         );
         $builder->add(
             'state',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label'       => 'State',
                 'required' => false,
@@ -59,7 +59,7 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'country',
-            'country',
+            'Symfony\Component\Form\Extension\Core\Type\CountryType',
             [
                 'empty_value' => 'Country&hellip;',
                 'label'       => 'Country'
@@ -67,14 +67,14 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'zip',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'ZIP',
             ]
         );
         $builder->add(
             'vatNumber',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'VAT Number (if applicable)',
                 'required' => false,
@@ -82,14 +82,14 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'number',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Card Number',
             ]
         );
         $builder->add(
             'month',
-            'month',
+            'Moovly\RecurlyBundle\Form\Type\MonthType',
             [
                 'empty_value' => 'Month&hellip;',
                 'label'       => 'Expiration Date (Month)'
@@ -97,7 +97,7 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'year',
-            'year',
+            'Moovly\RecurlyBundle\Form\Type\YearType',
             [
                 'empty_value' => 'Year&hellip;',
                 'label'       => 'Expiration Date (Year)'
@@ -105,7 +105,7 @@ class BillingInfoType extends AbstractType
         );
         $builder->add(
             'verificationValue',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Security Code (CVV)',
             ]
@@ -115,7 +115,7 @@ class BillingInfoType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
                 'data_class' => 'Recurly\Model\BillingInfo',
@@ -125,7 +125,7 @@ class BillingInfoType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'billingInfo';
     }

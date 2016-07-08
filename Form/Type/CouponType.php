@@ -4,7 +4,7 @@ namespace Moovly\RecurlyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CouponType extends AbstractType
 {
@@ -16,7 +16,7 @@ class CouponType extends AbstractType
     {
         $builder->add(
             'couponCode',
-            'text',
+            'Symfony\Component\Form\Extension\Core\Type\TextType',
             [
                 'label' => 'Coupon Code',
             ]
@@ -26,7 +26,7 @@ class CouponType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
                 'data_class' => 'Recurly\Model\Coupon',
@@ -36,7 +36,7 @@ class CouponType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'coupon';
     }
