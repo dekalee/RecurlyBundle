@@ -15,12 +15,18 @@
             "homepage": "https://github.com/Brammm"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/dekalee/Recurly"
+        }
+    ],
     "require": {
         "symfony/http-kernel": "~2.8|~3.0",
         "symfony/config": "~2.8|~3.0",
         "symfony/dependency-injection": "~2.8|~3.0",
         "symfony/form": "~2.8|~3.0",
-        "moovly/recurly": "~0.1"
+        "moovly/recurly": "dev-master"
     },
     "autoload": {
         "psr-0": {
